@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-02-09T20:22:54.971825",
+  "strategy": "COMBINED_RSI",
+  "leverage": 4.0,
+  "stop_loss": 0.03,
+  "take_profit": 0.06,
+  "results": {
+    "ETH": {
+      "return_pct": 0.0,
+      "max_drawdown_pct": 0.0,
+      "total_trades": 0,
+      "win_rate": 0
+    },
+    "BTC": {
+      "return_pct": 0.0,
+      "max_drawdown_pct": 0.0,
+      "total_trades": 0,
+      "win_rate": 0
+    },
+    "AVAX": {
+      "return_pct": -48.994418133861735,
+      "max_drawdown_pct": -56.406668538322144,
+      "total_trades": 3,
+      "win_rate": 0.0
+    },
+    "NEAR": {
+      "return_pct": -58.687847432615925,
+      "max_drawdown_pct": -60.74287174935691,
+      "total_trades": 3,
+      "win_rate": 0.0
+    }
+  }
+}
