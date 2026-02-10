@@ -663,7 +663,40 @@ def run_hourly_backtest():
     # Log completion
     print(f"\n✅ Backtest complete. Plot: {plot_file}")
     
+    # Auto-push to GitHub
+    push_to_github(run_time)
+    
     return sorted_results, buy_hold
+
+
+def push_to_github(run_time: str):
+    """Commit and push results to GitHub"""
+    import subprocess
+    
+    try:
+        repo_dir = Path(__file__).parent
+        
+        # Add all changes
+        subprocess.run(['git', 'add', '-A'], cwd=repo_dir, capture_output=True)
+        
+        # Commit with timestamp
+        commit_msg = f"Hourly research: {run_time}"
+        result = subprocess.run(
+            ['git', 'commit', '-m', commit_msg],
+            cwd=repo_dir, capture_output=True, text=True
+        )
+        
+        if 'nothing to commit' in result.stdout or 'nothing to commit' in result.stderr:
+            print("📤 No changes to push")
+            return
+        
+        # Push to GitHub
+        subprocess.run(['git', 'push'], cwd=repo_dir, capture_output=True)
+        print(f"📤 Pushed to GitHub: {commit_msg}")
+        
+    except Exception as e:
+        print(f"⚠️ GitHub push failed: {e}")
+
 
 if __name__ == "__main__":
     run_hourly_backtest()
